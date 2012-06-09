@@ -1,0 +1,14 @@
+.center
+  %h3 Upload a new picture
+  %br/
+  = form_for @picture do |f|
+    -if @picture.errors.any?
+      %div{:class=>"alert alert-error"}
+        %h2= "#{pluralize(@picture.errors.count, "error")} prohibited this picture from being saved:"
+        %ul
+          - @picture.errors.full_messages.each do |msg|
+            %li= msg
+    = f.file_field :photo
+    .actions{:style=>"margin-top:10px"}
+      = f.submit 'Upload', :class=>"btn btn-primary btn-large"
+      = link_to 'Back', pictures_path, :class=>"btn btn-large" if request.path != '/'

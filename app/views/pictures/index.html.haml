@@ -1,0 +1,11 @@
+.center
+  %h3 Uploaded images
+  %br/
+%div.pic_container
+  - @pictures.each do |picture|
+    %div.picture
+      = link_to image_tag(picture.photo.url(:thumbnail)), picture
+
+%br
+.center
+  = link_to 'New Picture', new_picture_path, :class=>"btn btn-primary btn-large"
